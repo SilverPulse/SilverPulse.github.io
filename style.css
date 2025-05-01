@@ -1,9 +1,9 @@
-/* Анимированный фон */
+/* Анимированный фон с частицами */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(-45deg, #a2d4ec, #c3ecf8, #8fd3f4, #64c1eb);
+  background: linear-gradient(-45deg, #ff3cac, #784ba0, #2b86c5, #4cc3ff);
   background-size: 400% 400%;
   background-attachment: fixed;
   min-height: 100vh;
@@ -12,16 +12,56 @@ body {
   align-items: start;
   padding: 40px 15px;
   box-sizing: border-box;
-  animation: gradientBG 15s ease infinite;
+  animation: gradientBG 12s ease infinite;
+  position: relative;
+  overflow-x: hidden;
 }
 
+/* Частицы фона */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='3' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='80' cy='80' r='2' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='140' cy='140' r='4' fill='rgba(255,255,255,0.2)'/%3E%3C/svg%3E");
+  animation: particleMove 20s linear infinite;
+  z-index: -1;
+}
+
+/* Анимации */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Карточка резюме с эффектом стекла */
+@keyframes particleMove {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-1000px) translateX(-500px); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0, 0); opacity: 0.5; }
+  100% { transform: scale(20, 20); opacity: 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+}
+
+/* Карточка резюме */
 .resume {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
@@ -43,7 +83,7 @@ body {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
-/* Заголовок с анимацией */
+/* Заголовок */
 header h1 {
   font-size: 2.8rem;
   margin-bottom: 10px;
@@ -65,7 +105,7 @@ header p {
   transition: color 0.3s ease;
 }
 
-/* Подзаголовки с анимацией */
+/* Подзаголовки */
 h2 {
   font-size: 1.7rem;
   margin-top: 30px;
@@ -96,7 +136,7 @@ h2:hover::after {
   width: 100%;
 }
 
-/* Текст с плавным появлением */
+/* Текст */
 p, li {
   font-size: 1.05rem;
   color: #2c3e50;
@@ -106,16 +146,12 @@ p, li {
   animation-delay: 0.3s;
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
 ul {
   margin-top: 10px;
   padding-left: 20px;
 }
 
-/* Контейнер кнопки */
+/* Кнопки */
 .button-container {
   display: flex;
   justify-content: center;
@@ -123,7 +159,6 @@ ul {
   gap: 20px;
 }
 
-/* Кнопка с улучшенной анимацией */
 button {
   padding: 14px 40px;
   font-size: 1.1rem;
@@ -148,7 +183,6 @@ button:active {
   transform: translateY(1px);
 }
 
-/* Ripple эффект */
 button::after {
   content: '';
   position: absolute;
@@ -167,36 +201,13 @@ button:focus:not(:active)::after {
   animation: ripple 1s ease-out;
 }
 
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(20, 20);
-    opacity: 0;
-  }
-}
-
-/* Эффекты фокуса */
+/* Эффекты редактирования */
 [contenteditable]:focus {
   outline: none;
   background-color: rgba(41, 128, 185, 0.1);
   transition: background-color 0.3s;
   border-radius: 4px;
   box-shadow: inset 0 0 0 2px #2980b9;
-}
-
-/* Анимация при появлении */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Декоративные элементы */
@@ -218,7 +229,6 @@ button:focus:not(:active)::after {
   opacity: 0.12;
 }
 
-/* Плавающие пузырьки на фоне */
 .bubble {
   position: absolute;
   border-radius: 50%;
@@ -227,15 +237,32 @@ button:focus:not(:active)::after {
   pointer-events: none;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-1000px) rotate(720deg);
-    opacity: 0;
-  }
+/* Темная тема */
+.dark-theme {
+  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
+  background-size: 400% 400%;
+}
+
+.dark-theme::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='3' fill='rgba(200,200,255,0.1)'/%3E%3Ccircle cx='80' cy='80' r='2' fill='rgba(200,200,255,0.1)'/%3E%3Ccircle cx='140' cy='140' r='4' fill='rgba(200,200,255,0.1)'/%3E%3C/svg%3E");
+}
+
+.dark-theme .resume {
+  background: rgba(30, 30, 30, 0.9);
+  color: #ddd;
+}
+
+.dark-theme header h1 {
+  color: #90caf9;
+}
+
+.dark-theme header p {
+  color: #bbb;
+}
+
+.dark-theme h2 {
+  color: #64b5f6;
+  border-color: #555;
 }
 
 /* Адаптивность */
