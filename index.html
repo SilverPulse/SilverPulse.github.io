@@ -6,31 +6,44 @@
   <title>Резюме</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Анимированный фон */
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 20px;
-      background: #f5f5f5;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .dark-theme {
-      background: #121212;
+      background: linear-gradient(-45deg, #121212, #1a1a2e, #16213e, #0f3460);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #f0f0f0;
     }
 
     .resume {
       max-width: 800px;
       margin: auto;
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s, color 0.3s;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
     }
 
     .dark-theme .resume {
-      background: #1e1e1e;
+      background: rgba(30, 30, 30, 0.9);
       color: #ddd;
     }
 
@@ -47,12 +60,18 @@
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #1976d2;
+      transition: transform 0.3s;
+    }
+
+    header img:hover {
+      transform: rotate(10deg);
     }
 
     header h1 {
       margin: 0;
       font-size: 2.5rem;
       color: #2c3e50;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
     .dark-theme header h1 {
@@ -74,6 +93,11 @@
       color: #1976d2;
       border-bottom: 1px solid #ccc;
       padding-bottom: 4px;
+      transition: all 0.3s;
+    }
+
+    h2:hover {
+      letter-spacing: 1px;
     }
 
     .dark-theme h2 {
@@ -90,6 +114,8 @@
 
     [contenteditable]:focus {
       outline: 2px solid #1976d2;
+      background: rgba(25, 118, 210, 0.1);
+      border-radius: 4px;
     }
 
     .button-container {
@@ -107,11 +133,14 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     button:hover {
       background-color: #145ea8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
     @media (max-width: 600px) {
