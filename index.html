@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Резюме</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="resume" class="resume">
+    <header>
+      <h1 id="name" contenteditable="true">Имя Фамилия</h1>
+      <p id="profession" contenteditable="true">Профессия или Цель</p>
+    </header>
+    <section>
+      <h2 contenteditable="true">Опыт работы</h2>
+      <p contenteditable="true">Детали опыта работы...</p>
+    </section>
+    <section>
+      <h2 contenteditable="true">Образование</h2>
+      <p contenteditable="true">Детали образования...</p>
+    </section>
+    <section>
+      <h2 contenteditable="true">Навыки</h2>
+      <ul>
+        <li contenteditable="true">HTML</li>
+        <li contenteditable="true">CSS</li>
+        <li contenteditable="true">JavaScript</li>
+      </ul>
+    </section>
+  </div>
+  <button id="downloadBtn" class="ripple">Скачать PDF</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
