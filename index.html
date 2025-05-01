@@ -7,10 +7,16 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 20px;
       background: #f5f5f5;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-theme {
+      background: #121212;
+      color: #f0f0f0;
     }
 
     .resume {
@@ -20,20 +26,46 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-theme .resume {
+      background: #1e1e1e;
+      color: #ddd;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #1976d2;
     }
 
     header h1 {
-      margin: 0 0 10px;
+      margin: 0;
       font-size: 2.5rem;
       color: #2c3e50;
-      border-bottom: 2px solid #1976d2;
-      padding-bottom: 5px;
+    }
+
+    .dark-theme header h1 {
+      color: #90caf9;
     }
 
     header p {
       font-size: 1.2rem;
       color: #34495e;
-      margin-bottom: 20px;
+    }
+
+    .dark-theme header p {
+      color: #bbb;
     }
 
     h2 {
@@ -44,31 +76,26 @@
       padding-bottom: 4px;
     }
 
-    p, li {
+    .dark-theme h2 {
+      color: #64b5f6;
+      border-color: #555;
+    }
+
+    p {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 10px;
-      color: #333;
-    }
-
-    ul {
-      padding-left: 20px;
+      white-space: pre-line;
     }
 
     [contenteditable]:focus {
       outline: 2px solid #1976d2;
-      animation: pulse 0.3s ease-in-out;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-      100% { transform: scale(1); }
     }
 
     .button-container {
       display: flex;
       justify-content: center;
+      gap: 10px;
       margin-top: 40px;
     }
 
@@ -80,9 +107,6 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
       transition: background-color 0.3s;
     }
 
@@ -90,35 +114,15 @@
       background-color: #145ea8;
     }
 
-    .ripple::after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      transform: scale(0);
-      animation: rippleEffect 0.6s linear;
-      pointer-events: none;
-      top: var(--ripple-y);
-      left: var(--ripple-x);
-      transform: translate(-50%, -50%) scale(0);
-    }
-
-    @keyframes rippleEffect {
-      to {
-        transform: translate(-50%, -50%) scale(4);
-        opacity: 0;
-      }
-    }
-
     @media (max-width: 600px) {
-      .resume {
-        padding: 15px;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      header h1 {
-        font-size: 2rem;
+      header img {
+        width: 80px;
+        height: 80px;
       }
 
       h2 {
@@ -135,9 +139,13 @@
 <body>
   <div id="resume" class="resume">
     <header>
-      <h1 id="name" contenteditable="true">Шаимов Богдан</h1>
-      <p id="profession" contenteditable="true">Профессия: Оператор аттракциона «Пьяный велосипед»</p>
+      <img src="https://yandex.ru/images/search?text=фото+спанч+боба+и+патрика&img_url=https%3A%2F%2Fabrakadabra.fun%2Fuploads%2Fposts%2F2021-12%2F1640452859_51-abrakadabra-fun-p-parnie-oboi-s-patrikom-51.jpg&pos=2&rpt=simage&stype=image&lr=65&parent-reqid=1746082501898196-2883711357008291779-balancer-l7leveler-kubr-yp-klg-297-BAL&source=serp" alt="Фото" />
+      <div>
+        <h1 id="name" contenteditable="true">Шаимов Богдан</h1>
+        <p id="profession" contenteditable="true">Профессия: Оператор аттракциона «Пьяный велосипед»</p>
+      </div>
     </header>
+
     <section>
       <h2 contenteditable="true">Опыт работы: 3 года</h2>
       <p contenteditable="true">Детали опыта работы: 
@@ -148,6 +156,7 @@
 Решение нештатных ситуаций и оперативное реагирование на запросы гостей.
 Поддержание порядка и позитивной атмосферы во время работы аттракциона.</p>
     </section>
+
     <section>
       <h2 contenteditable="true">Образование: Harvard University </h2>
       <p contenteditable="true">Детали образования: 
@@ -156,25 +165,33 @@
 Ключевые дисциплины: Когнитивное моделирование. Нейровизуализация и fMRI-анализ. Экспериментальная психология восприятия
 Достижения / Активности: Публикации в журналах Nature Neuroscience и Cognitive Psychology. Руководство исследовательским проектом по изучению памяти. Преподавание курса "Введение в когнитивную нейробиологию"</p>
     </section>
+
     <section>
       <h2 contenteditable="true">Навыки:</h2>
-      <p contenteditable="true">Мастер баланса – умею удерживать равновесие между "срочно" и "потом".<br>
-Гуру многозадачности – могу одновременно слушать начальника, листать соцсети и делать вид, что работаю.<br>
-Профессиональный дешифровщик – понимаю любые почерки, включая врачебные.<br>
-Эксперт по энергосбережению – оптимизирую трудозатраты по принципу "меньше движений – больше результата".<br>
-Дипломированный специалист по кофе-менеджменту – знаю, как растянуть одну чашку на три часа.<br>
-Переговорщик уровня "Pro" – могу убедить коллегу, что это его очередь идти за печеньками.<br>
-Креативный искатель оправданий – если Deadline наступил, а работы нет, объясню это "непредвиденными обстоятельствами Вселенной".<br>
-Сомелье офисных сплетен – держу руку на пульсе, но делаю вид, что "вне политики".<br>
-Магистр Ctrl+C / Ctrl+V – виртуозно владею всеми известными комбинациями клавиш.<br>
+      <p contenteditable="true">Мастер баланса – умею удерживать равновесие между "срочно" и "потом".
+Гуру многозадачности – могу одновременно слушать начальника, листать соцсети и делать вид, что работаю.
+Профессиональный дешифровщик – понимаю любые почерки, включая врачебные.
+Эксперт по энергосбережению – оптимизирую трудозатраты по принципу "меньше движений – больше результата".
+Дипломированный специалист по кофе-менеджменту – знаю, как растянуть одну чашку на три часа.
+Переговорщик уровня "Pro" – могу убедить коллегу, что это его очередь идти за печеньками.
+Креативный искатель оправданий – если Deadline наступил, а работы нет, объясню это "непредвиденными обстоятельствами Вселенной".
+Сомелье офисных сплетен – держу руку на пульсе, но делаю вид, что "вне политики".
+Магистр Ctrl+C / Ctrl+V – виртуозно владею всеми известными комбинациями клавиш.
 Специалист по стресс-менеджменту – после аврала восстанавливаюсь за 5 минут с помощью мемов.</p>
-     
     </section>
   </div>
+
   <div class="button-container">
-    <button id="downloadBtn" class="ripple">Скачать PDF</button>
+    <button id="downloadBtn">Скачать PDF</button>
+    <button onclick="document.body.classList.toggle('dark-theme')">Сменить тему</button>
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const resume = document.getElementById("resume");
+      html2pdf().from(resume).save("resume.pdf");
+    });
+  </script>
 </body>
 </html>
