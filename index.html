@@ -5,17 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Резюме</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Стили для фото */
+    header {
+      position: relative;
+      padding-left: 100px; /* Отступ для фото */
+      min-height: 100px; /* Минимальная высота шапки */
+      margin-bottom: 30px;
+    }
+
+    header img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #1976d2;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    /* Остальные ваши стили из style.css остаются без изменений */
+  </style>
 </head>
 <body>
   <div id="resume" class="resume">
     <header>
-      <img class="profile-photo" src="https://i.pinimg.com/736x/54/07/e8/5407e8b0c5db3010281cf39fac864438.jpg" alt="Фото профиля" />
-      <div class="header-content">
+      <img src="https://i.pinimg.com/736x/54/07/e8/5407e8b0c5db3010281cf39fac864438.jpg" alt="Фото" />
+      <div>
         <h1 id="name" contenteditable="true">Шаимов Богдан</h1>
         <p id="profession" contenteditable="true">Профессия: Оператор аттракциона «Пьяный велосипед»</p>
       </div>
     </header>
 
+    <!-- Остальное содержимое без изменений -->
     <section>
       <h2 contenteditable="true">Опыт работы: 3 года</h2>
       <p contenteditable="true">Детали опыта работы: 
@@ -53,7 +82,7 @@
 
   <div class="button-container">
     <button id="downloadBtn">Скачать PDF</button>
-    <button id="themeToggleBtn">Сменить тему</button>
+    <button onclick="document.body.classList.toggle('dark-theme')">Сменить тему</button>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
@@ -61,10 +90,6 @@
     document.getElementById("downloadBtn").addEventListener("click", () => {
       const resume = document.getElementById("resume");
       html2pdf().from(resume).save("resume.pdf");
-    });
-
-    document.getElementById("themeToggleBtn").addEventListener("click", () => {
-      document.body.classList.toggle("dark-theme");
     });
   </script>
 </body>
