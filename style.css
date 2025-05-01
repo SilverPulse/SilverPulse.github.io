@@ -1,84 +1,164 @@
-/* style.css */
+/* Общие стили */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background: #f5f5f5;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #c3ecf8, #a2d4ec);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 40px 15px;
+  box-sizing: border-box;
 }
 
+/* Карточка резюме */
 .resume {
-  max-width: 800px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  max-width: 900px;
+  width: 100%;
+  animation: fadeInUp 0.8s ease forwards;
+  position: relative;
+  overflow: hidden;
 }
 
-h1, h2 {
-  margin: 0 0 10px;
-  color: #1976d2;
-}
-
-p, li {
+/* Заголовок */
+header h1 {
+  font-size: 2.8rem;
   margin-bottom: 10px;
+  color: #1f3a93;
+  border-bottom: 3px solid #2980b9;
+  display: inline-block;
 }
 
-[contenteditable]:focus {
-  outline: 2px solid #1976d2;
-  animation: pulse 0.3s ease-in-out;
+header p {
+  font-size: 1.3rem;
+  color: #34495e;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+/* Подзаголовки */
+h2 {
+  font-size: 1.7rem;
+  margin-top: 30px;
+  color: #2980b9;
+  position: relative;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ddd;
 }
 
+/* Текст */
+p, li {
+  font-size: 1.05rem;
+  color: #2c3e50;
+  line-height: 1.7;
+}
+
+ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+/* Контейнер кнопки */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Кнопка */
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #1976d2;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  background-color: #1f3a93;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
-button:focus {
-  outline: none;
+button:hover {
+  background-color: #1455a3;
 }
 
-.ripple::after {
-  content: "";
+/* Ripple (Material Wave) */
+button.ripple:active::after {
+  content: '';
   position: absolute;
   width: 100px;
   height: 100px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: rippleEffect 0.6s linear;
-  pointer-events: none;
   top: var(--ripple-y);
   left: var(--ripple-x);
+  background: rgba(255, 255, 255, 0.6);
   transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
 }
 
-@keyframes rippleEffect {
+@keyframes ripple {
   to {
     transform: translate(-50%, -50%) scale(4);
     opacity: 0;
   }
 }
 
+/* Эффекты фокуса */
+[contenteditable]:focus {
+  outline: 2px dashed #2980b9;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: background-color 0.3s;
+}
+
+/* Анимация при появлении */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Картинка в фоне */
+.resume::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 200px;
+  height: 200px;
+  background: url('https://cdn-icons-png.flaticon.com/512/3135/3135715.png') no-repeat center/contain;
+  opacity: 0.1;
+  pointer-events: none;
+  transform: rotate(-15deg);
+}
+
+/* Адаптивность */
 @media (max-width: 600px) {
   .resume {
-    padding: 10px;
+    padding: 20px;
   }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
   button {
     width: 100%;
+    font-size: 1rem;
   }
 }
