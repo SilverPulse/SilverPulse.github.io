@@ -6,31 +6,55 @@
   <title>Резюме</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Анимированный фон */
+    /* Супер-фон с частицами */
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 20px;
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      transition: background 0.3s, color 0.3s;
       min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(-45deg, #ff3cac, #784ba0, #2b86c5, #4cc3ff);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      position: relative;
     }
 
+    /* Анимация градиента */
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    .dark-theme {
-      background: linear-gradient(-45deg, #121212, #1a1a2e, #16213e, #0f3460);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #f0f0f0;
+    /* Плавающие частицы */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='3' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='80' cy='80' r='2' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='140' cy='140' r='4' fill='rgba(255,255,255,0.2)'/%3E%3C/svg%3E");
+      animation: particleMove 20s linear infinite;
+      z-index: -1;
     }
 
+    @keyframes particleMove {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-1000px) translateX(-500px); }
+    }
+
+    /* Тёмная тема */
+    .dark-theme {
+      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
+      background-size: 400% 400%;
+    }
+
+    .dark-theme::before {
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='3' fill='rgba(200,200,255,0.1)'/%3E%3Ccircle cx='80' cy='80' r='2' fill='rgba(200,200,255,0.1)'/%3E%3Ccircle cx='140' cy='140' r='4' fill='rgba(200,200,255,0.1)'/%3E%3C/svg%3E");
+    }
+
+    /* Остальные стили (без изменений) */
     .resume {
       max-width: 800px;
       margin: auto;
@@ -168,7 +192,7 @@
 <body>
   <div id="resume" class="resume">
     <header>
-      <img src="https://yandex.ru/images/search?pos=0&img_url=https%3A%2F%2Fabrakadabra.fun%2Fuploads%2Fposts%2F2021-12%2F1640452859_51-abrakadabra-fun-p-parnie-oboi-s-patrikom-51.jpg" alt="Фото" />
+      <img src="https://yandex.ru/images/search?pos=0&img_url=https%3A%2F%2Fabrakadabra.fun%2Fuploads%2Fposts%2F2021-12%2F1640452859_51-abrakadabra-fun-p-parnie-oboi-s-patrikom-51.jpg&text=фото+спанч+боба+и+патрика&lr=65&rpt=simage&source=serp.jpg" alt="Фото" />
       <div>
         <h1 id="name" contenteditable="true">Шаимов Богдан</h1>
         <p id="profession" contenteditable="true">Профессия: Оператор аттракциона «Пьяный велосипед»</p>
