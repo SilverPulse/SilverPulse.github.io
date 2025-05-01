@@ -30,6 +30,36 @@ body::before {
   z-index: -1;
 }
 
+/* Стили для круглого фото */
+header {
+  position: relative;
+  padding-left: 120px;
+  min-height: 100px;
+  margin-bottom: 30px;
+}
+
+.profile-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1976d2;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+.header-content {
+  padding-top: 10px;
+}
+
 /* Анимации */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
@@ -265,6 +295,11 @@ button:focus:not(:active)::after {
   border-color: #555;
 }
 
+.dark-theme .profile-photo {
+  border-color: #64b5f6;
+  box-shadow: 0 3px 10px rgba(100, 181, 246, 0.3);
+}
+
 /* Адаптивность */
 @media (max-width: 600px) {
   body {
@@ -276,6 +311,17 @@ button:focus:not(:active)::after {
   .resume {
     padding: 20px;
     backdrop-filter: none;
+  }
+
+  header {
+    padding-left: 90px;
+    min-height: 80px;
+  }
+
+  .profile-photo {
+    width: 60px;
+    height: 60px;
+    left: 15px;
   }
 
   header h1 {
