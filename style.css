@@ -28,3 +28,107 @@ button:nth-child(2):hover {
 
 /* ========== ВАШ СУЩЕСТВУЮЩИЙ CSS ========== */
 /* (остальной ваш CSS, включая @media print, остается ниже) */
+@media print {
+  /* Основные настройки */
+  body {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    padding: 0 !important;
+  }
+  
+  /* Основной контейнер */
+  .resume {
+    background-color: #ffffff !important;
+    padding: 25px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    color: #333333 !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Шапка с фото */
+  header {
+    background-color: #ffffff !important;
+    border-bottom: 3px solid #1976d2 !important;
+    padding-bottom: 15px !important;
+    margin-bottom: 25px !important;
+  }
+  
+  /* Имя и профессия */
+  header h1 {
+    color: #1a237e !important;
+    font-size: 2.4rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  header p {
+    color: #444444 !important;
+    font-size: 1.2rem !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Заголовки разделов */
+  h2 {
+    color: #1976d2 !important;
+    border-bottom: 2px solid #1976d2 !important;
+    padding-bottom: 6px !important;
+    margin-top: 30px !important;
+    font-size: 1.6rem !important;
+  }
+  
+  /* Основной текст */
+  p {
+    color: #333333 !important;
+    font-size: 1.1rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Фото */
+  header img {
+    border: 3px solid #1976d2 !important;
+    background-color: #f8f8f8 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Убираем кнопки */
+  .button-container {
+    display: none !important;
+  }
+  
+  /* Таблицы стилей для списков (если будут использоваться) */
+  ul, ol {
+    color: #333333 !important;
+    margin-bottom: 15px !important;
+  }
+  
+  li {
+    margin-bottom: 8px !important;
+  }
+  
+  /* Таблицы */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 20px !important;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd !important;
+    padding: 8px !important;
+    color: #333333 !important;
+  }
+  
+  th {
+    background-color: #f2f2f2 !important;
+    color: #1976d2 !important;
+  }
+  
+  /* Принудительное применение стилей */
+  * {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border-color: #dddddd !important;
+  }
+}
+
