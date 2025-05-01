@@ -11,7 +11,27 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Set the initial theme
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-theme");
+  }
 });
+
+// Toggle theme
+const toggleThemeButton = document.getElementById("themeToggle");
+if (toggleThemeButton) {
+  toggleThemeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    
+    // Save theme preference in localStorage
+    if (document.body.classList.contains("dark-theme")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
 
 // Download resume as PDF
 const downloadBtn = document.getElementById("downloadBtn");
