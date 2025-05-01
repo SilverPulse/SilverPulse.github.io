@@ -9,8 +9,8 @@
 <body>
   <div id="resume" class="resume">
     <header>
-      <img src="https://i.pinimg.com/736x/54/07/e8/5407e8b0c5db3010281cf39fac864438.jpg" alt="Фото" />
-      <div>
+      <img class="profile-photo" src="https://i.pinimg.com/736x/54/07/e8/5407e8b0c5db3010281cf39fac864438.jpg" alt="Фото профиля" />
+      <div class="header-content">
         <h1 id="name" contenteditable="true">Шаимов Богдан</h1>
         <p id="profession" contenteditable="true">Профессия: Оператор аттракциона «Пьяный велосипед»</p>
       </div>
@@ -53,7 +53,7 @@
 
   <div class="button-container">
     <button id="downloadBtn">Скачать PDF</button>
-    <button onclick="document.body.classList.toggle('dark-theme')">Сменить тему</button>
+    <button id="themeToggleBtn">Сменить тему</button>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
@@ -63,26 +63,9 @@
       html2pdf().from(resume).save("resume.pdf");
     });
 
-    // Опционально: скрипт для плавающих пузырьков
-    function createBubbles() {
-      const bubbleCount = 10;
-      for (let i = 0; i < bubbleCount; i++) {
-        const bubble = document.createElement('div');
-        bubble.classList.add('bubble');
-        const size = Math.random() * 60 + 20;
-        const posX = Math.random() * 100;
-        bubble.style.cssText = `
-          width: ${size}px;
-          height: ${size}px;
-          left: ${posX}%;
-          bottom: -${size}px;
-          animation-delay: ${Math.random() * 15}s;
-          animation-duration: ${Math.random() * 20 + 10}s;
-        `;
-        document.body.appendChild(bubble);
-      }
-    }
-    window.addEventListener('load', createBubbles);
+    document.getElementById("themeToggleBtn").addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+    });
   </script>
 </body>
 </html>
